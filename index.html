@@ -24,7 +24,7 @@
 
     <div class="container">
       <div class="carousel-wrapper">
-        <slick init-onload=false data=vm.arrayList arrows=true dots=false infinite=false speed=300 slides-to-show=1 touch-move=false slides-to-scroll=1>
+        <slick on-init=vm.onInit() arrows=true dots=false infinite=false speed=300 slides-to-show=1 touch-move=false slides-to-scroll=1>
           <div class="line-item" ng-repeat="item in vm.arrayList()">
             <h1>{{item}}</h1>
           </div>

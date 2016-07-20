@@ -57,10 +57,13 @@
 
     vm.onBeforeChange = function() {
       console.log("changeBefore triggered.");
+      vm.resetTime();
     }
 
     vm.onAfterChange = function() {
       console.log("changeAfter triggered.");
+      vm.updateElapsedTime();
+      $scope.$apply();
     }
 
     vm.onSetPosition = function() {
@@ -115,22 +118,12 @@
       }
     }
 
-    vm.setFilterLoading = function() {
-
-      vm.setFilter(true);
-    }
-
-
-    vm.animateSlide = function(targetLeft, callback) {
-
-    }
 
     vm.slickCommands = function(command, param1) {
       console.log(command+" executed!");
       var result = $('.my-slick').slick(command, param1);
       vm.output = result.toString();
       console.log(result);
-      //return result;
     }
 
     vm.addSlide = function(markup, index, addBefore) {
