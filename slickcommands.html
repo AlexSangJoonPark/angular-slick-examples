@@ -76,9 +76,9 @@
 
     <h3>output : {{vm.output}}</h3>
 
-    <div class="container">
+    <div class="carousel-wrapper">
 
-
+      
 
       <!-- spinner -->
       <div class="spinner-wrapper">
@@ -92,17 +92,13 @@
       </div>
 
       <!-- carousel -->
-      <div class="carousel-wrapper">
-        <slick class="my-slick" on-init=vm.onInit() on-re-init=vm.onReInit() on-before-change=vm.onBeforeChange() on-after-change=vm.onAfterChange() on-set-position=vm.onSetPosition() arrows=true dots=false infinite=false speed=300 slides-to-show=1 touch-move=false slides-to-scroll=1>
-          <div class="line-item" ng-repeat="item in vm.arrayList()">
-            <h1>{{item}}</h1>
-          </div>
-        </slick>
-      </div>
+      <slick class="my-slick" on-init=vm.onInit() on-re-init=vm.onReInit() on-before-change=vm.onBeforeChange() on-after-change=vm.onAfterChange() on-set-position=vm.onSetPosition() arrows=true dots=false infinite=false speed=300 slides-to-show=1 touch-move=false slides-to-scroll=1>
+        <div class="line-item" ng-repeat="item in vm.arrayList()">
+          <h1>{{item}}</h1>
+        </div>
+      </slick>
 
     </div>
-
-
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>

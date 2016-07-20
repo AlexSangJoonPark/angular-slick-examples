@@ -76,7 +76,9 @@
       vm.updateElapsedTime();
 
       updateNoOfSlide();
+      vm.containerVisible(true);
       vm.showLoading(false);
+
     }
 
     vm.onReInit = function() {
@@ -150,6 +152,13 @@
       vm.slickCommands('setSlideClasses', currentIndex);
     }
 
+    vm.containerVisible = function(isVisable) {
+      if (isVisable) {
+        $('.carousel-wrapper').css('overflow', 'visible');
+      } else {
+        $('.carousel-wrapper').css('overflow', 'hidden');
+      }
+    };
   }
 
 

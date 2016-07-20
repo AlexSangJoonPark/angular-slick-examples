@@ -2,9 +2,8 @@
 /* overriding style.css */
 .spinner-wrapper {
   background-color: white;
-  width: 400px;
+  width: 100%;
   text-align: center;
-  display: inline-block;
   position: absolute;
   z-index: 10;
 }
