@@ -1,0 +1,6 @@
+/* overriding style.css */
+/* solution for refresh */
+.container {
+    overflow: hidden;
+    height: 402px;
+}

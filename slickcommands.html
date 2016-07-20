@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html ng-app="carouselApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Slick Carousel Test</title>
+    <link rel="stylesheet" type="text/css" href="bower_components/slick-carousel/slick/slick.css"/>
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="bower_components/slick-carousel/slick/slick-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/refresh.css"/>
+    <link rel="stylesheet" type="text/css" href="css/loading.css"/>
+
+  </head>
+  <body ng-controller="CarouselController as vm">
+
+    <a href="index.html">Go back to Index</a>
+
+    <h2>Total : {{vm.count}} records</h2>
+    <h2>Number of Slides : <span id='noOfSlides'>0</span> slides</h2>
+
+    <button onclick="location.reload();">Refresh</button>
+
+    <button ng-click="vm.setFilter(true)">setFilter 10</button>
+    <button ng-click="vm.setFilter(false)">unfilterSlides</button>
+    <button ng-click="vm.slickCommands('unslick')">unslick</button>
+    <button ng-click="vm.slickCommands('refresh')">refresh</button>
+    <button ng-click="vm.slickCommands('unload')">unload</button>
+    <button ng-click="vm.slickCommands('startLoad')">startLoad</button>
+    <button ng-click="vm.slickCommands('loadSlider')">loadSlider</button>
+    <button ng-click="vm.slickCommands('setPosition')">setPosition</button>
+    <button ng-click="vm.slickCommands('setDimensions')">setDimensions</button>
+    <button ng-click="vm.slickCommands('setHeight')">setHeight</button>
+    <button ng-click="vm.slickCommands('setPosition')">setPosition</button>
+    <button ng-click="vm.slickCommands('setFade')">setFade</button>
+    <button ng-click="vm.slickCommands('setProps')">setProps</button>
+    <button ng-click="vm.addSlide('<div><h1>'+vm.increase()+'</h1></div>', 0, true)">addSlide first</button>
+    <button ng-click="vm.addSlide('<div><h1>'+vm.increase()+'</h1></div>', vm.slides-1, false)">addSlide last</button>
+    <button ng-click="vm.removeSlide(0, false, false)">removeSlide first</button>
+    <button ng-click="vm.removeSlide(vm.slides-1, false, false)">removeSlide last</button>
+    <button ng-click="vm.removeSlide(0, false, true)">removeSlide ALL</button>
+    <button ng-click="vm.slickCommands('animateHeight')">animateHeight</button>
+    <button ng-click="vm.slickCommands('autoPlay')">autoPlay</button>
+    <button ng-click="vm.slickCommands('autoPlayClear')">autoPlayClear</button>
+    <button ng-click="vm.slickCommands('autoPlayIterator')">autoPlayIterator</button>
+    <button ng-click="vm.slickCommands('buildArrows')">buildArrows</button>
+    <button ng-click="vm.slickCommands('buildDots')">buildDots</button>
+    <button ng-click="vm.slickCommands('buildOut')">buildOut</button>
+    <button ng-click="vm.slickCommands('destroy')">destroy</button>
+    <button ng-click="vm.slickCommands('getNavigableIndexes')">getNavigableIndexes</button>
+    <button ng-click="vm.slickCommands('getSlick')">getSlick</button>
+    <button ng-click="vm.slickCommands('getSlideCount')">getSlideCount</button>
+    <button ng-click="vm.slickCommands('getDotCount')">getDotCount == lastIndex</button>
+    <button ng-click="vm.slickCommands('getCurrent')">getCurrent index</button>
+    <button ng-click="vm.slickCommands('init')">init</button>
+    <button ng-click="vm.slickCommands('reinit')">reinit</button>
+    <button ng-click="vm.slickCommands('initArrowEvents')">initArrowEvents</button>
+    <button ng-click="vm.slickCommands('initDotEvents')">initDotEvents</button>
+    <button ng-click="vm.slickCommands('initializeEvents')">initializeEvents</button>
+    <button ng-click="vm.slickCommands('initUI')">initUI</button>
+    <button ng-click="vm.slickCommands('lazyLoad')">lazyLoad</button>
+    <button ng-click="vm.slickCommands('progressiveLazyLoad')">progressiveLazyLoad</button>
+    <button ng-click="vm.slickCommands('loadSlider')">loadSlider</button>
+    <button ng-click="vm.slickCommands('pause')">pause</button>
+    <button ng-click="vm.slickCommands('play')">play</button>
+    <button ng-click="vm.slickCommands('setupInfinite')">setupInfinite</button>
+    <button ng-click="vm.slickCommands('swipeDirection')">swipeDirection</button>
+    <button ng-click="vm.slickCommands('visibility')">visibility</button>
+
+    <button ng-click="vm.animateSlide('animateSlide')">animateSlide</button>
+    <button ng-click="vm.setSlideClasses(0)">setSlideClasses(index)</button>
+    <button ng-click="vm.isShow = !vm.isShow">Loding Toggle</button>
+    <button ng-click="vm.getLeft()">getLeft position</button>
+    <button ng-click="vm.slickCommands('goTo', 0)">goTo first</button>
+    <button ng-click="vm.slickCommands('goTo', vm.slides-1)">goTo last</button>
+    <button ng-click="vm.slickCommands('prev')">prev</button>
+    <button ng-click="vm.slickCommands('next')">next</button>
+
+    <h3>output : {{vm.output}}</h3>
+
+    <div class="container">
+
+
+
+      <!-- spinner -->
+      <div class="spinner-wrapper">
+        <div class="spinner" >
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
+      </div>
+
+      <!-- carousel -->
+      <div class="carousel-wrapper">
+        <slick class="my-slick" on-init=vm.onInit() on-re-init=vm.onReInit() on-before-change=vm.onBeforeChange() on-after-change=vm.onAfterChange() on-set-position=vm.onSetPosition() arrows=true dots=false infinite=false speed=300 slides-to-show=1 touch-move=false slides-to-scroll=1>
+          <div class="line-item" ng-repeat="item in vm.arrayList()">
+            <h1>{{item}}</h1>
+          </div>
+        </slick>
+      </div>
+
+    </div>
+
+
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/slick-carousel/slick/slick.js"></script>
+    <script src="js/lib/angular-slick/slick.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controller/CarouselController.js"></script>
+  </body>
+</html>
