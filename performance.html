@@ -15,11 +15,12 @@
 
     <a href="index.html">Go back to Index</a>
 
-    <h2>Total : {{vm.count}} records</h2>
-    <h2>Number of Slides : <span id='noOfSlides'>0</span> slides</h2>
-    <h2>Starting Time : {{vm.startTime | date:'yyyy-MM-dd HH:mm:ss.sss'}}</h2>
-    <h2>Ending Time : {{vm.endTime | date:'yyyy-MM-dd HH:mm:ss.sss'}}</h2>
+    <h2>Total : {{vm.count}} records, Number of Slides : <span id='noOfSlides'>0</span> slides</h2>
+    <h2>Starting Time : {{vm.startTime | date:'yyyy-MM-dd HH:mm:ss.sss'}}, Ending Time : {{vm.endTime | date:'yyyy-MM-dd HH:mm:ss.sss'}}</h2>
     <h2>Elapsed Time : {{vm.elapsedTime}} millisecs</h2>
+    <h3>This page shows the performance of the page rendering.</h3>
+    <h3>Still users want to see fast response what I am looking for the best way.</h3>
+    <h3>Please pull request if you know best way!</h3>
 
     <button onclick="location.reload();">Refresh</button>
     <button ng-click="vm.setFilter(true)">setFilter 10</button>
