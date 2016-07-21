@@ -1,0 +1,18 @@
+/* overriding style.css */
+/* solution for multislicks */
+
+
+.filter-wrapper {
+  position: absolute;
+  top:0;
+  left:-15%;
+  width: 100px;
+}
+
+.filter {
+  display: inline-block;
+}
+
+.selected {
+  color: red;
+}

@@ -1,0 +1,30 @@
+<div class="carousel-contents">
+
+  <div class="filter-wrapper">
+    <button class="filter" ng-click="vm.setType(1)" ng-class="{selected : vm.type === 1}"> Slick 1 </button>
+    <button class="filter" ng-click="vm.setType(2)" ng-class="{selected : vm.type === 2}"> Slick 2 </button>
+  </div>
+
+  <button class="prevSlide" aria-label="previous"> < </button>
+  <button class="nextSlide" aria-label="next"> > </button>
+  <button class="prevSlideFirst" ng-click="vm.slickCommands('goTo', 0)"> << </button>
+  <button class="nextSlideLast" ng-click="vm.slickCommands('goTo', vm.slides-1)"> >> </button>
+
+  <div class="carousel-wrapper">
+    <div class="spinner-wrapper">
+      <div class="spinner" >
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+      </div>
+    </div>
+
+    <slick class="my-slick" on-init=vm.onInit() prev-arrow=.prevSlide next-arrow=.nextSlide arrows=true dots=false infinite=false speed=300 slides-to-show=1 touch-move=false slides-to-scroll=1>
+      <div class="line-item" ng-repeat="item in vm.arrayList(1, 5000)">
+        <h1>{{item}}</h1>
+      </div>
+    </slick>
+  </div>
+</div>

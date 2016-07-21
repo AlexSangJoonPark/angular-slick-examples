@@ -26,26 +26,28 @@
     <button ng-click="vm.setFilter(true)">setFilter 10 with Loding</button>
     <button ng-click="vm.setFilter(false)">unFilter with Loding</button>
 
-    <div class="carousel-wrapper">
+    <div class="carousel-contents">
+      <div class="carousel-wrapper">
 
-      <!-- spinner -->
-      <div class="spinner-wrapper">
-        <div class="spinner" >
-          <div class="rect1"></div>
-          <div class="rect2"></div>
-          <div class="rect3"></div>
-          <div class="rect4"></div>
-          <div class="rect5"></div>
+        <!-- spinner -->
+        <div class="spinner-wrapper">
+          <div class="spinner" >
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+          </div>
         </div>
+
+        <!-- carousel -->
+        <slick class="my-slick" on-init=vm.onInit() arrows=true dots=false infinite=false speed=300 slides-to-show=1 touch-move=false slides-to-scroll=1>
+          <div class="line-item" ng-repeat="item in vm.arrayList()">
+            <h1>{{item}}</h1>
+          </div>
+        </slick>
+
       </div>
-
-      <!-- carousel -->
-      <slick class="my-slick" on-init=vm.onInit() arrows=true dots=false infinite=false speed=300 slides-to-show=1 touch-move=false slides-to-scroll=1>
-        <div class="line-item" ng-repeat="item in vm.arrayList()">
-          <h1>{{item}}</h1>
-        </div>
-      </slick>
-
     </div>
 
     <script src="bower_components/jquery/dist/jquery.js"></script>

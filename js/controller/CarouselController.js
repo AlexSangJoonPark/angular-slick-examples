@@ -6,47 +6,77 @@
 
   function CarouselController($scope, $timeout) {
     var vm = this;
+    vm.type = 1;  // slick type
+    vm.setType = setType;
+    vm.showLoading = showLoading;
 
     vm.startTime = Date.now();
     vm.endTime = null;
     vm.elapsedTime = 0;
-    vm.resetTime = function() {
+    vm.resetTime = resetTime;
+    vm.updateElapsedTime = updateElapsedTime;
+    vm.output = '';
+
+    vm.filterLoading = true;
+    vm.isFilterSet = false;
+    vm.newSlideCount=0;
+    vm.increase = increase;
+    vm.slides = 0;
+
+    vm.count = 5000;
+    vm.arrayListCache = {};
+    vm.arrayList = arrayList;
+
+    function setType(type) {
+      if (type) {
+        vm.showLoading(true);
+        $timeout(function() {
+          vm.type = type;
+          vm.isFilterSet = false;
+        }, 100);
+      }
+    }
+
+    function arrayList(type, count) {
+
+      if (!type) {
+        type = 1;   // default
+      }
+      if (!count) {
+        count = 5000; // default
+      }
+
+      var arrayListCache = vm.arrayListCache;
+      if (!arrayListCache[type]) {
+        arrayListCache[type] = [];
+        for (var i = 0; i < count; i++) {
+          arrayListCache[type].push(i);
+        }
+      }
+      vm.count = arrayListCache[type].length;
+      return arrayListCache[type];
+    };
+
+    function updateElapsedTime() {
+        vm.endTime = Date.now();
+        vm.elapsedTime = vm.endTime - vm.startTime;
+    }
+    function resetTime() {
       vm.startTime = Date.now();
       vm.endTime = null;
       vm.elapsedTime = 0;
     }
-    vm.updateElapsedTime = function() {
-        vm.endTime = Date.now();
-        vm.elapsedTime = vm.endTime - vm.startTime;
-    }
 
-    vm.output = '';
-    vm.showLoading = function(isShow) {
+    function increase() {
+      return vm.newSlideCount++;
+    }
+    function showLoading(isShow) {
       if (isShow) {
         $('.spinner-wrapper').removeClass('hidden');
       } else {
         $('.spinner-wrapper').addClass('hidden');
       }
     }
-
-    vm.filterLoading = true;
-    vm.isFilterSet = false;
-
-    vm.count = 5000;
-    vm.arrayList = function() {
-      var arrayList = [];
-      for (var i = 0; i < vm.count; i++) {
-        arrayList.push(i);
-      }
-      return arrayList;
-    };
-
-    vm.newSlideCount=0;
-    vm.increase = function() {
-      return vm.newSlideCount++;
-    }
-
-    vm.slides = 0;
     function updateNoOfSlide() {
       vm.slides = $('.slick-track').children().length;
       $('#noOfSlides').text(vm.slides);

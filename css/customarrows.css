@@ -1,0 +1,26 @@
+/* overriding style.css */
+/* solution for customarrows */
+
+
+.prevSlide {
+    position: absolute;
+    top:45%;
+    left:-15%;
+}
+.nextSlide {
+    position: absolute;
+    top:45%;
+    right:-15%;
+}
+
+.prevSlideFirst {
+  position: absolute;
+  top:45%;
+  left:-25%;
+}
+
+.nextSlideLast {
+  position: absolute;
+  top:45%;
+  right:-25%;
+}

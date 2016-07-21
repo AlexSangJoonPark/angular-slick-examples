@@ -7,11 +7,15 @@ h1 {
     margin: 130px auto;
 }
 
+.carousel-contents {
+    position: relative;
+    width: 400px;
+    margin: auto;
+}
+
 .carousel-wrapper {
     position: relative;
     text-align: center;
-    width: 400px;
-    margin: auto;
 }
 
 .line-item {
