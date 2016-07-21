@@ -1,4 +1,4 @@
-<div class="carousel-contents debug">
+<div class="carousel-contents debug1">
 
   <filter></filter>
 
@@ -7,7 +7,7 @@
   <button class="prevSlideFirst" ng-click="vm.slickCommands('goTo', 0)"> << </button>
   <button class="nextSlideLast" ng-click="vm.slickCommands('goTo', vm.slides-1)"> >> </button>
 
-  <div class="carousel-wrapper">
+  <div class="carousel-wrapper debug2">
     <!-- <spinner></spinner> -->
 
     <div class="spinner-wrapper">
@@ -21,7 +21,7 @@
     </div>
 
     <slick class="my-slick" on-init=vm.onInit() prev-arrow=.prevSlide next-arrow=.nextSlide arrows=true dots=false infinite=false speed=300 slides-to-show=1 touch-move=false slides-to-scroll=1>
-      <div class="line-item" ng-repeat="item in vm.arrayList(1, 5000)">
+      <div class="line-item debug3" ng-repeat="item in vm.arrayList(1, 5000)">
         <h1>{{item}}</h1>
       </div>
     </slick>

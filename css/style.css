@@ -25,9 +25,21 @@ h1 {
     width: 100%;
     height: 100%;
     display: inline-block;
-    border : 1px red solid;
 }
 
 .hidden {
     visibility: hidden;
+}
+
+.debug1 {
+  border : 3px red solid;
+  /*margin : 2px;*/
+}
+.debug2 {
+  border : 2px green solid;
+  /*margin : 5px;*/
+}
+.debug3 {
+  border : 1px blue solid;
+  /*margin : 2px;*/
 }
