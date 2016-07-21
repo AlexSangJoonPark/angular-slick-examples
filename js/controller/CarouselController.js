@@ -9,6 +9,7 @@
     vm.type = 1;  // slick type
     vm.setType = setType;
     vm.showLoading = showLoading;
+    vm.containerVisible = containerVisible;
 
     vm.startTime = Date.now();
     vm.endTime = null;
@@ -27,6 +28,22 @@
     vm.arrayListCache = {};
     vm.arrayList = arrayList;
 
+    // filter cannot setting in init function
+    vm.onInit = function() {
+      console.log("onInit triggered.");
+      vm.updateElapsedTime();
+
+      updateNoOfSlide();
+      vm.containerVisible(true);
+      vm.showLoading(false);
+
+    }
+
+    vm.onReInit = function() {
+      console.log("onReInit triggered.");
+      updateNoOfSlide();
+    }
+    
     function setType(type) {
       if (type) {
         vm.showLoading(true);
@@ -70,6 +87,7 @@
     function increase() {
       return vm.newSlideCount++;
     }
+
     function showLoading(isShow) {
       if (isShow) {
         $('.spinner-wrapper').removeClass('hidden');
@@ -77,6 +95,15 @@
         $('.spinner-wrapper').addClass('hidden');
       }
     }
+
+    function containerVisible(isVisable) {
+      if (isVisable) {
+        $('.carousel-wrapper').css('overflow', 'visible');
+      } else {
+        $('.carousel-wrapper').css('overflow', 'hidden');
+      }
+    };
+
     function updateNoOfSlide() {
       vm.slides = $('.slick-track').children().length;
       $('#noOfSlides').text(vm.slides);
@@ -100,20 +127,35 @@
       console.log("onSetPosition triggered.");
     }
 
-    // filter cannot setting in init function
-    vm.onInit = function() {
-      console.log("onInit triggered.");
-      vm.updateElapsedTime();
-
-      updateNoOfSlide();
-      vm.containerVisible(true);
-      vm.showLoading(false);
-
+    vm.slickCommands = function(command, param1) {
+      console.log(command+" executed!");
+      var result = $('.my-slick').slick(command, param1);
+      vm.output = result.toString();
+      console.log(result);
     }
 
-    vm.onReInit = function() {
-      console.log("onReInit triggered.");
+    vm.addSlide = function(markup, index, addBefore) {
+      console.log(markup);
+      $('.my-slick').slick('addSlide', markup, index, addBefore);
       updateNoOfSlide();
+    }
+
+    vm.removeSlide = function(index, removeBefore, removeAll) {
+        $('.my-slick').slick('removeSlide', index, removeBefore, removeAll);
+        updateNoOfSlide();
+    }
+
+    vm.getCurrent = function() {
+      var currentIndex = $('.my-slick').slick('getCurrent');
+      return currentIndex;
+    }
+    vm.getLeft = function() {
+      var currentIndex = $('.my-slick').slick('getCurrent');
+      vm.slickCommands('getLeft', currentIndex);
+    }
+    vm.setSlideClasses = function(index) {
+      var currentIndex = $('.my-slick').slick('getCurrent');
+      vm.slickCommands('setSlideClasses', currentIndex);
     }
 
     vm.setFilter = function(flag) {
@@ -150,45 +192,6 @@
       }
     }
 
-
-    vm.slickCommands = function(command, param1) {
-      console.log(command+" executed!");
-      var result = $('.my-slick').slick(command, param1);
-      vm.output = result.toString();
-      console.log(result);
-    }
-
-    vm.addSlide = function(markup, index, addBefore) {
-      console.log(markup);
-      $('.my-slick').slick('addSlide', markup, index, addBefore);
-      updateNoOfSlide();
-    }
-
-    vm.removeSlide = function(index, removeBefore, removeAll) {
-        $('.my-slick').slick('removeSlide', index, removeBefore, removeAll);
-        updateNoOfSlide();
-    }
-
-    vm.getCurrent = function() {
-      var currentIndex = $('.my-slick').slick('getCurrent');
-      return currentIndex;
-    }
-    vm.getLeft = function() {
-      var currentIndex = $('.my-slick').slick('getCurrent');
-      vm.slickCommands('getLeft', currentIndex);
-    }
-    vm.setSlideClasses = function(index) {
-      var currentIndex = $('.my-slick').slick('getCurrent');
-      vm.slickCommands('setSlideClasses', currentIndex);
-    }
-
-    vm.containerVisible = function(isVisable) {
-      if (isVisable) {
-        $('.carousel-wrapper').css('overflow', 'visible');
-      } else {
-        $('.carousel-wrapper').css('overflow', 'hidden');
-      }
-    };
   }
 
 

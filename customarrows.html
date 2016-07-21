@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="bower_components/slick-carousel/slick/slick-theme.css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <link rel="stylesheet" type="text/css" href="css/refresh.css"/>
-    <link rel="stylesheet" type="text/css" href="css/loading.css"/>
+    <link rel="stylesheet" type="text/css" href="css/spinner.css"/>
     <link rel="stylesheet" type="text/css" href="css/customarrows.css"/>
 
   </head>
@@ -18,8 +18,8 @@
 
     <h2>Total : {{vm.count}} records</h2>
     <h2>Number of Slides : <span id='noOfSlides'>0</span> slides</h2>
-    <h3>This page shows a possible solution to avoid rendering issues, but still shows Angular Expression in begining.</h3>
-    <h3>Please check <a href="loading.html">the loading solution.</a></h3>
+    <h3>This page shows a possible solution to use custom arrow buttons rather than slick default</h3>
+    <h3>Please check <a href="multislicks.html">the multiple slicks solution.</a></h3>
     <button onclick="location.reload();">Refresh</button>
     <button ng-click="vm.setFilter(true)">setFilter 10 with Loding</button>
     <button ng-click="vm.setFilter(false)">unFilter with Loding</button>

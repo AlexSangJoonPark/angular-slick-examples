@@ -1,9 +1,6 @@
-<div class="carousel-contents">
+<div class="carousel-contents debug">
 
-  <div class="filter-wrapper">
-    <button class="filter" ng-click="vm.setType(1)" ng-class="{selected : vm.type === 1}"> Slick 1 </button>
-    <button class="filter" ng-click="vm.setType(2)" ng-class="{selected : vm.type === 2}"> Slick 2 </button>
-  </div>
+  <filter></filter>
 
   <button class="prevSlide" aria-label="previous"> < </button>
   <button class="nextSlide" aria-label="next"> > </button>
@@ -11,6 +8,8 @@
   <button class="nextSlideLast" ng-click="vm.slickCommands('goTo', vm.slides-1)"> >> </button>
 
   <div class="carousel-wrapper">
+    <!-- <spinner></spinner> -->
+
     <div class="spinner-wrapper">
       <div class="spinner" >
         <div class="rect1"></div>
